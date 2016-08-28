@@ -15,12 +15,27 @@ function getCommands($root) {
     return $commands;
 }
 
+/**
+ * @param string $root
+ */
+function configureRequiredEnv($root) {
+    $config = new Dotenv\Dotenv("$root/etc", 'config');
+    $config->load();
+    $config->required('APP_NAME');
+
+    include "$root/etc/config_requirements.inc.php";
+}
+
 $root = realpath(__DIR__ . '/../');
 require "$root/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
 
+configureRequiredEnv($config, $root);
+
 $app = new Application();
+$app->setName(getenv('APP_NAME'));
 $app->addCommands(getCommands($root));
+
 $app->run();
 

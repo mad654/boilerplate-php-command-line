@@ -39,8 +39,8 @@ See a example in [src/Example/Environment.php](src/Example/Environment.php)
 
 ## Roadmap
 - [DONE] integrate symfony-console
-- integrate .env: feature/mad654/env-integration
-- integrate monologger
+- [DONE] integrate .env: feature/mad654/env-integration
+- [PROGRESS] integrate monologger: feature/mad654/logger-integration
 - add support for aspects
 - add support for design by contract
 - add support for php unit

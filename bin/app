@@ -2,17 +2,21 @@
 
 <?php
 
+$root = realpath(__DIR__ . '/../');
 require "$root/vendor/autoload.php";
+
+use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Application;
 
-function main() {
-    $root = realpath(__DIR__ . '/../');
-
+function main($root) {
     configureRequiredEnv($root);
+    $appName = getenv('APP_NAME');
+    $logger = configureLogging($root, $appName);
 
     $app = new Application();
-    $app->setName(getenv('APP_NAME'));
-    $app->addCommands(getCommands($root));
+    $app->setName($appName);
+    $app->addCommands(getCommands($root, $logger));
     $app->run();
 }
 
@@ -24,7 +28,7 @@ function main() {
  * @param string $root root directory
  * @return \Symfony\Component\Console\Command\Command[]
  */
-function getCommands($root) {
+function getCommands($root, LoggerInterface $logger) {
     $commands = include "$root/etc/commands.inc.php";
     return $commands;
 }
@@ -40,4 +44,15 @@ function configureRequiredEnv($root) {
     include "$root/etc/config_requirements.inc.php";
 }
 
-main();
+/**
+ * @param string $root
+ * @param string $name
+ * @return Logger
+ */
+function configureLogging($root, $name) {
+    $logger = new Logger($name);
+    "$root/etc/logging.inc.php";
+    return $logger;
+}
+
+main($root);

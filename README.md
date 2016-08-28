@@ -63,7 +63,7 @@ The following processors are configured by default:
 ## Roadmap
 - [DONE] integrate symfony-console
 - [DONE] integrate .env: feature/mad654/env-integration
-- [PROGRESS] integrate monologger: feature/mad654/logger-integration
+- [DONE] integrate monologger: feature/mad654/logger-integration
 - add support for aspects
 - add support for design by contract
 - add support for php unit

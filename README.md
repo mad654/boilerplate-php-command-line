@@ -39,6 +39,13 @@ See a example in [src/Example/Environment.php](src/Example/Environment.php)
 
 ### Configure logging
 
+You have full control over all logging settings provided by monolog.
+Make your changes in [etc/logging.inc.php](etc/logging.inc.php).
+
+More details on monolog: https://github.com/Seldaek/monolog
+
+#### Preconfigured defaults
+
 The following handlers are configured by default:
  - finger-crossed console logging to `STDOUT` based on `APP_LOG_LEVEL`
    in `etc/config`
@@ -50,11 +57,6 @@ The following processors are configured by default:
  - ProcessIdProcessor
  - MemoryUsageProcessor
  - MemoryPeakUsageProcessor
-
-You have full control over all logging settings provided by monolog.
-Make your changes in [etc/logging.inc.php](etc/logging.inc.php).
-
-More details on monolog: https://github.com/Seldaek/monolog
 
 **NOTE: -q -v -vv -vvv have no effect on the console logger**
 

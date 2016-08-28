@@ -2,11 +2,25 @@
 
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+/**
+ *
+ * Wrapped in function to deny access on $app
+ * and other environment
+ *
+ * @param string $root root directory
+ * @return \Symfony\Component\Console\Command\Command[]
+ */
+function getCommands($root) {
+    $commands = include "$root/etc/commands.inc.php";
+    return $commands;
+}
+
+$root = realpath(__DIR__ . '/../');
+require "$root/vendor/autoload.php";
 
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$app = new Application();
+$app->addCommands(getCommands($root));
+$app->run();
 
-
-$application->run();

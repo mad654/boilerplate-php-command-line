@@ -8,5 +8,7 @@
             "email": "matthias@ich-digital.de"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/console": "^3.1"
+    }
 }

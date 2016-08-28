@@ -1,0 +1,4 @@
+# .env config file
+# find details for usage on https://github.com/vlucas/phpdotenv
+
+APP_NAME="boilerplate php command line"

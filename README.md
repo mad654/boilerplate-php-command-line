@@ -14,3 +14,11 @@ bin/app --help
 3. Register command in `etc/commands.inc.php`
 
 More details on symfony-console: http://symfony.com/doc/current/components/console.html
+
+## Roadmap
+- [DONE] integrate symfony-console
+- integrate .env
+- integrate monologger
+- add support for aspects
+- add support for design by contract
+- add support for php unit

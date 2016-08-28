@@ -41,5 +41,10 @@ class HelloWorldCommand extends Command
         $name = $style->ask("Whats your name?", 'Hugu');
         $this->logger->info("User gave his name: {n}", [ 'n' => $name ]);
         $style->success("Hello $name!");
+
+        $shouldLogError = rand(0,1);
+        if ($shouldLogError > 0) {
+            $this->logger->error("A DEMO ERROR");
+        }
     }
 }

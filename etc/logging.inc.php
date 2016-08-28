@@ -13,11 +13,21 @@ use Monolog\Processor\PsrLogMessageProcessor;
 /* @var string $logDir */
 /* @var string $logFileName */
 
+// Development
 $logger->pushHandler(new \Monolog\Handler\StreamHandler(
     "$logDir/$logFileName.debug.log",
-    \Monolog\Logger::DEBUG)
-);
+    \Monolog\Logger::DEBUG,
+    $bubble = true
+));
 
+// Development + Production
+$logger->pushHandler(new \Monolog\Handler\FingersCrossedHandler(
+    new \Monolog\Handler\StreamHandler(
+        "$logDir/$logFileName.error.log",
+        \Monolog\Logger::DEBUG,
+        $bubble = true
+    )
+));
 
 $logger->pushProcessor(new PsrLogMessageProcessor());
 $logger->pushProcessor(new ProcessIdProcessor());

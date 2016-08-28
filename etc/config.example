@@ -16,3 +16,5 @@ APP_LOG_DIR="${APP_VAR_DIR}/log"
 APP_LOG_LEVEL="DEBUG"
 
 # Add your application stuff here
+## !!! HAVE SOME REQUIRED ONE, OR WANT TO FILTER VALUES? !!!
+## !!! Take a look at `etc/config_requirements.inc.php`  !!!

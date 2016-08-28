@@ -4,6 +4,12 @@ Provide easy to use boilerplate for php cli application
 ## Usage
 
 ```
+git clone git@github.com:mad654/boilerplate-php-command-line.git sample-project
+cd sample-project
+make
+make test
+
+# or call it directly
 bin/app --help
 ```
 

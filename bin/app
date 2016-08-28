@@ -2,6 +2,20 @@
 
 <?php
 
+require "$root/vendor/autoload.php";
+use Symfony\Component\Console\Application;
+
+function main() {
+    $root = realpath(__DIR__ . '/../');
+
+    configureRequiredEnv($root);
+
+    $app = new Application();
+    $app->setName(getenv('APP_NAME'));
+    $app->addCommands(getCommands($root));
+    $app->run();
+}
+
 /**
  *
  * Wrapped in function to deny access on $app
@@ -26,16 +40,4 @@ function configureRequiredEnv($root) {
     include "$root/etc/config_requirements.inc.php";
 }
 
-$root = realpath(__DIR__ . '/../');
-require "$root/vendor/autoload.php";
-
-use Symfony\Component\Console\Application;
-
-configureRequiredEnv($config, $root);
-
-$app = new Application();
-$app->setName(getenv('APP_NAME'));
-$app->addCommands(getCommands($root));
-
-$app->run();
-
+main();

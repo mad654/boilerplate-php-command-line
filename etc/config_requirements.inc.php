@@ -1,5 +1,5 @@
 <?php
-//
+# find details for usage on https://github.com/vlucas/phpdotenv#requiring-variables-to-be-set
 
 /* @var \Dotenv\Dotenv $config */
 

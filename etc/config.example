@@ -1,0 +1,9 @@
+# .env config file
+# find details for usage on https://github.com/vlucas/phpdotenv
+
+APP_NAME="boilerplate php command line"
+
+APP_VAR_DIR="./var/"
+
+APP_CACHE_DIR="${APP_VAR_DIR}/cache"
+APP_LOG_DIR="${APP_VAR_DIR}/log"

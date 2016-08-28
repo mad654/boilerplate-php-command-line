@@ -37,6 +37,27 @@ More details on .env: https://github.com/vlucas/phpdotenv#usage
 **NOTE: you should abstract access to `getenv` calls by a class.**
 See a example in [src/Example/Environment.php](src/Example/Environment.php)
 
+### Configure logging
+
+The following handlers are configured by default:
+ - finger-crossed console logging to `STDOUT` based on `APP_LOG_LEVEL`
+   in `etc/config`
+ - log all to '`APP_LOG_DIR`/`APP_NAME`.debug.log'
+ - finger-crossed logging to '`APP_LOG_DIR`/`APP_NAME`.error.log'
+
+The following processors are configured by default:
+ - PsrLogMessageProcessor
+ - ProcessIdProcessor
+ - MemoryUsageProcessor
+ - MemoryPeakUsageProcessor
+
+You have full control over all logging settings provided by monolog.
+Make your changes in [etc/logging.inc.php](etc/logging.inc.php).
+
+More details on monolog: https://github.com/Seldaek/monolog
+
+**NOTE: -q -v -vv -vvv have no effect on the console logger**
+
 ## Roadmap
 - [DONE] integrate symfony-console
 - [DONE] integrate .env: feature/mad654/env-integration
@@ -46,6 +67,7 @@ See a example in [src/Example/Environment.php](src/Example/Environment.php)
 - add support for php unit
 
 ### Other ideas
+- make finger-crossed console logging configurable
 - extract app-{name,version} from etc/config
 - add make targets: release.prepare
 - add make targets: dev.feature

@@ -1,0 +1,12 @@
+{
+    "name": "mad654/boilerplate-php-command-line",
+    "description": "Provide easy to use boilerplate for php cli applications",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias",
+            "email": "matthias@ich-digital.de"
+        }
+    ],
+    "require": {}
+}

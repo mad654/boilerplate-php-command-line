@@ -10,7 +10,9 @@ APP_CACHE_DIR="${APP_VAR_DIR}/cache"
 APP_LOG_DIR="${APP_VAR_DIR}/log"
 
 ### Command line log level for finger crossed handler
-### which means: Nothing is logged until a error occured,
+### which means: Nothing is logged until a error occured
+APP_LOG_FINGERSCROSSED=true
+
 ### if so all log messages for APP_LOG_LEVEL and above
 ### is dump to STDOUT
 APP_LOG_LEVEL="DEBUG"

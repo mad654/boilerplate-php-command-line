@@ -44,3 +44,9 @@ See a example in [src/Example/Environment.php](src/Example/Environment.php)
 - add support for aspects
 - add support for design by contract
 - add support for php unit
+
+### Other ideas
+- extract app-{name,version} from etc/config
+- add make targets: release.prepare
+- add make targets: dev.feature
+- connect console logger to symfony-consle -vvv option

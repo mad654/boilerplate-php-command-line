@@ -1,6 +1,9 @@
 
 build: vendor etc/config
 
+test: build
+	bin/app example:hello-world
+
 vendor: composer.json composer.lock
 	@composer install
 

@@ -50,8 +50,20 @@ function configureRequiredEnv($root) {
  * @return Logger
  */
 function configureLogging($root, $name) {
-    $logger = new Logger($name);
-    "$root/etc/logging.inc.php";
+    $logDir = getenv('APP_LOG_DIR');
+    $logName = strtoupper(str_replace(' ', '_', $name));
+    $logFileName = strtolower(str_replace(' ', '_', $name));
+    $logger = new Logger($logName);
+
+    if (!file_exists($logDir)) {
+        $logger->notice('Create log directory: {d}', [ 'd' => $logDir ]);
+        mkdir ($logDir, 0750, true);
+    }
+
+    $logger->info('Configure logging base on {f}', [ 'f' => "$root/etc/logging.inc.php"]);
+    include "$root/etc/logging.inc.php";
+    $logger->info('Logger configured');
+
     return $logger;
 }
 

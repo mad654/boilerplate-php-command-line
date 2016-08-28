@@ -5,6 +5,8 @@
 $root = realpath(__DIR__ . '/../');
 require "$root/vendor/autoload.php";
 
+use Bramus\Monolog\Formatter\ColoredLineFormatter;
+use Bramus\Monolog\Formatter\ColorSchemes\DefaultScheme;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Application;
@@ -53,7 +55,8 @@ function configureLogging($root, $name) {
     $logDir = getenv('APP_LOG_DIR');
     $logName = strtoupper(str_replace(' ', '_', $name));
     $logFileName = strtolower(str_replace(' ', '_', $name));
-    $logger = new Logger($logName);
+
+    $logger = createConsoleLogger($logName);
 
     if (!file_exists($logDir)) {
         $logger->notice('Create log directory: {d}', [ 'd' => $logDir ]);
@@ -63,6 +66,23 @@ function configureLogging($root, $name) {
     $logger->info('Configure logging base on {f}', [ 'f' => "$root/etc/logging.inc.php"]);
     include "$root/etc/logging.inc.php";
     $logger->info('Logger configured');
+
+    return $logger;
+}
+
+/**
+ * @param $logName
+ * @return Logger
+ */
+function createConsoleLogger($logName)
+{
+    $logger = new Logger($logName);
+    $logger->pushHandler(
+        new \Monolog\Handler\FingersCrossedHandler(
+            (new \Monolog\Handler\StreamHandler('php://stdout', getenv('APP_LOG_LEVEL')))
+                ->setFormatter(new ColoredLineFormatter(new DefaultScheme()))
+        )
+    );
 
     return $logger;
 }

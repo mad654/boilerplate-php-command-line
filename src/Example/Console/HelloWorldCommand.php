@@ -31,7 +31,7 @@ class HelloWorldCommand extends Command
         parent::configure();
 
         $this->setName('example:hello-world');
-        $this->setDescription('guess what it is');
+        $this->setDescription('Guess what it is! Additionally it logs an error - sometimes');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)

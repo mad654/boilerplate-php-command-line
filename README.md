@@ -17,7 +17,7 @@ More details on symfony-console: http://symfony.com/doc/current/components/conso
 
 ## Roadmap
 - [DONE] integrate symfony-console
-- integrate .env
+- integrate .env: feature/mad654/env-integration
 - integrate monologger
 - add support for aspects
 - add support for design by contract

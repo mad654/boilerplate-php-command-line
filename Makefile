@@ -4,7 +4,9 @@ build: vendor etc/config
 test: build
 	bin/app example:hello-world
 
-vendor: composer.json composer.lock
+vendor: composer.lock
+
+composer.lock: composer.json
 	@composer install
 
 etc/config: etc/config.example

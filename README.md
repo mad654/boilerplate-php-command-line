@@ -70,6 +70,7 @@ The following processors are configured by default:
 - [DONE] integrate symfony-console
 - [DONE] integrate .env: feature/mad654/env-integration
 - [DONE] integrate monologger: feature/mad654/logger-integration
+- add support for multiple channel loggers: https://github.com/mad654/ga-php/pull/3/commits/61fdf7113609c5a5084aa346edfd3a7886a24baa
 - add support for aspects
 - add support for design by contract
 - add support for php unit
